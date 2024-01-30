@@ -11,12 +11,8 @@ config_version=5
 [application]
 
 config/name="Deadwood"
-run/main_scene="res://scenes/player.tscn"
+run/main_scene="res://scenes/campsite.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-
-[display]
-
-window/stretch/scale=4.0
 
 [dotnet]
 

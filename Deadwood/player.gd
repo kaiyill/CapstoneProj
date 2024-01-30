@@ -4,7 +4,6 @@ const speed = 50
 var current_dir = "none"
 
 func _ready():
-	#$AnimatedSprite2D.play("front_idle")
 	pass
 	
 func player():
