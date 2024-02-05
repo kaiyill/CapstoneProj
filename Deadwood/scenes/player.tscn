@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3wwmmlx86bqg"]
+[gd_scene load_steps=25 format=3 uid="uid://d3wwmmlx86bqg"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_6ic6x"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_6ic6x"]
 [ext_resource type="Texture2D" uid="uid://d4nuv48m2j3ey" path="res://sprites/Characters/MattSpritesheet.png" id="1_uv7nu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3p66n"]
@@ -186,12 +186,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_foknt"]
+radius = 7.0
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(23, 17)
 script = ExtResource("1_6ic6x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_d06qv")
 animation = &"right_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_foknt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4.2, 4.2)
+limit_left = 0
+limit_top = 0
+limit_right = 506
+limit_bottom = 300
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
