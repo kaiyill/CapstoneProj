@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Deadwood"
+run/main_scene="res://scenes/campsite.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GlobalVariables="*res://global_variables.gd"
+
+[dotnet]
+
+project/assembly_name="Deadwood"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/main.dialogue")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
