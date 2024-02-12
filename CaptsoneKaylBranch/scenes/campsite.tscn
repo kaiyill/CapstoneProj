@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://be6p5ugjx1iqt"]
+[gd_scene load_steps=11 format=3 uid="uid://be6p5ugjx1iqt"]
 
 [ext_resource type="Texture2D" uid="uid://k1yhq36nfqck" path="res://sprites/Tileset1 (Raven Fantasy)/16x16.png" id="1_dnppy"]
 [ext_resource type="Script" path="res://scripts/campsite.gd" id="1_ncbok"]
 [ext_resource type="PackedScene" uid="uid://d3wwmmlx86bqg" path="res://scenes/player.tscn" id="2_x7ix3"]
 [ext_resource type="Texture2D" uid="uid://b7dlnkpv8bccp" path="res://sprites/misc/city_cars_2.png" id="4_wscta"]
+[ext_resource type="PackedScene" uid="uid://hx8mauiwa40a" path="res://scenes/emmy.tscn" id="5_sie50"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7753c"]
 texture = ExtResource("1_dnppy")
@@ -740,5 +741,8 @@ layer_0/name = "car"
 layer_0/modulate = Color(0.978517, 0.836085, 0.705289, 1)
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(524293, 0, 7)
+
+[node name="Emmy" parent="." instance=ExtResource("5_sie50")]
+position = Vector2(186, 144)
 
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]

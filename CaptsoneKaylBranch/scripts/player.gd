@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const speed = 50
 var current_dir = "none"
+var in_range_emmy = false
 
 func _ready():
 	pass
@@ -12,11 +13,14 @@ func player():
 
 func _physics_process(delta):
 	player_movement(delta)
-	
+	if in_range_emmy == true:
+		if Input.is_action_just_pressed("ui_accept"):
+			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start")
+			return
 	
 @warning_ignore("unused_parameter")
 func player_movement(delta):
-	
+		
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "right"
 		play_anim(1)
@@ -71,3 +75,12 @@ func play_anim(movement):
 
 		
 
+
+
+func _on_area_2d_body_entered(body):
+	if body.has_method("emmy"):
+		in_range_emmy = true
+
+func _on_area_2d_body_exited(body):
+	if body.has_method("emmy"):
+		in_range_emmy = false
