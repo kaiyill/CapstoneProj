@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://be6p5ugjx1iqt"]
-
-[ext_resource type="PackedScene" uid="uid://daxyabd2wbc2y" path="res://scenes/apple_tree.tscn" id="1_d0782"]
-
-[node name="world" type="Node2D"]
-
-[node name="apple_tree" parent="." instance=ExtResource("1_d0782")]
-position = Vector2(441, 170)
