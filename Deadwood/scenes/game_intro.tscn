@@ -124,6 +124,7 @@ position = Vector2(-471, 274)
 scale = Vector2(4.55263, 4.55263)
 sprite_frames = SubResource("SpriteFrames_lnd8b")
 animation = &"car"
+frame_progress = 0.656477
 script = SubResource("GDScript_v3rt8")
 
 [node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
