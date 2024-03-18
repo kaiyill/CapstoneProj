@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const speed = 50
 var current_dir = "none"
-var in_range_emmy = false
 
+@onready var actionable_finder: Area2D = $Direction/area2d
 func _ready():
 	pass
 	
@@ -13,10 +13,7 @@ func player():
 
 func _physics_process(delta):
 	player_movement(delta)
-	if in_range_emmy == true:
-		if Input.is_action_just_pressed("ui_accept"):
-			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start")
-			return
+	
 	
 @warning_ignore("unused_parameter")
 func player_movement(delta):
@@ -47,7 +44,12 @@ func player_movement(delta):
 		velocity.y = 0
 	
 	move_and_slide()
-	
+	if Input.is_action_just_pressed("chat"):
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			actionables[0].action()
+			return
+		
 func play_anim(movement):
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
@@ -73,12 +75,5 @@ func play_anim(movement):
 		elif movement == 0:
 			anim.play("up_idle")
 
+		
 
-func _on_area_2d_body_entered(body):
-	if body.has_method("emmy"):
-		in_range_emmy = true
-
-
-func _on_area_2d_body_exited(body):
-	if body.has_method("emmy"):
-		in_range_emmy = false
