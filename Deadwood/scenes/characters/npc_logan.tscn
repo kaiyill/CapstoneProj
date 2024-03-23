@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0sdkrfqcau4y"]
+
+[ext_resource type="Texture2D" uid="uid://b7t7slgvvj0dk" path="res://sprites/Characters/LoganSpritesheet.png" id="1_oa32x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdoqg"]
+radius = 6.0
+
+[node name="Logan" type="CharacterBody2D"]
+
+[node name="LoganSpritesheet" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_oa32x")
+hframes = 16
+vframes = 4
+frame = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_pdoqg")
