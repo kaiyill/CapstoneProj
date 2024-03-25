@@ -1,6 +1,6 @@
 ~ start
 
-Emmy: Hi Matt
+Emmy: Hey Matt! We're finally here!
 if apple_status == "has":
 	Matt: I have an apple for you
 	- Give it to Emmy
@@ -14,12 +14,10 @@ elif apple_status == "gave"
 	Emmy: Thank you again for the apple
 	Matt: No worries
 else
-	Matt: Man I wish I had an apple. I am sure there is an apple tree somewhere around here
+	Emmy: Logan and I set up the tent already, I'm not sure where Fiona is though.
 => END
 
 ~ logan_dialogue
-Logan: Hi Matt
-Logan: Its getting dark, we should get some wood to get the fire started 
-- Responsse
-
+Logan: It's gonna get creepy in these woods once the sun sets, we should look for firewood.
+Logan: I saw the path goes south from here, would you mind looking around?
 => END

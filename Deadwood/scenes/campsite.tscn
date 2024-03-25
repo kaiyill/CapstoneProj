@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://be6p5ugjx1iqt"]
+[gd_scene load_steps=16 format=3 uid="uid://be6p5ugjx1iqt"]
 
 [ext_resource type="Script" path="res://scripts/campsite.gd" id="1_ncbok"]
 [ext_resource type="PackedScene" uid="uid://cysy4pyvyskw5" path="res://scenes/tile_map1.tscn" id="2_gaa77"]
@@ -20,6 +20,45 @@ radius = 21.095
 [sub_resource type="CircleShape2D" id="CircleShape2D_uy81q"]
 radius = 18.2483
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6rb"]
+size = Vector2(51, 48)
+
+[sub_resource type="Animation" id="Animation_r2l3h"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jww4p"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cu28s"]
+_data = {
+"fade_in": SubResource("Animation_r2l3h"),
+"fade_out": SubResource("Animation_jww4p")
+}
+
 [node name="campsite" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ncbok")
@@ -36,7 +75,7 @@ y_sort_enabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 y_sort_enabled = true
-polygon = PackedVector2Array(92, 0, 418, 0, 418, 303, 418, 353, 363, 352, 362, 302, 0, 304, 0, 0, 91, 0, 92, -37, 32, -43, -31, -12, -28, 91, -40, 283, 66, 351, 230, 370, 464, 364, 593, 216, 562, 107, 517, -53, 389, -65, 218, -66, 83, -27, 86, -1)
+polygon = PackedVector2Array(92, 0, 418, 0, 418, 303, 418, 351, 367, 351, 366, 303, 0, 304, 0, 0, 91, 0, 92, -37, 32, -43, -31, -12, -28, 91, -40, 283, 66, 351, 230, 370, 464, 364, 593, 216, 562, 107, 517, -53, 389, -65, 218, -66, 83, -27, 86, -1)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamWAV_3kmp1")
@@ -63,4 +102,29 @@ dialogue_start = "logan_dialogue"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logan/Actionable2"]
 shape = SubResource("CircleShape2D_uy81q")
 
+[node name="forest_area_transition" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="forest_area_transition"]
+position = Vector2(393, 325)
+shape = SubResource("RectangleShape2D_if6rb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cu28s")
+}
+
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[connection signal="body_entered" from="forest_area_transition" to="." method="_on_forest_area_transition_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-State="*res://state.gd"
+State="*res://scripts/state.gd"
 
 [dialogue_manager]
 

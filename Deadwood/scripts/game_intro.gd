@@ -2,7 +2,8 @@ extends Node2D
 
 @onready var camera = $Path2D/PathFollow2D/Camera2D
 @onready var car = $Path2D2/PathFollow2D/car
-const NextScene = preload("res://scenes/campsite.tscn")
+
+@export var level_name = "game_intro" 
 
 var is_openingcutscene = true
 var is_camerafollowing = true
@@ -27,3 +28,8 @@ func _physics_process(delta):
 func cutsceneopening():
 	camera.enabled = true
 	is_camerafollowing = true
+	
+signal level_changed(level_name)
+
+func _on_play_pressed():
+	emit_signal("level_changed", level_name)
