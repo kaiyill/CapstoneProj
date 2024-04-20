@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfbv3f568hm4d"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_ualqw"]
+[ext_resource type="FontFile" uid="uid://d0ikdbkke0c4o" path="res://fonts/joystix monospace.otf" id="2_3eeem"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbuuq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tgkb3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71pj4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27nk6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sihwq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0dgh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8kiil"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2468"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qdedg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocbh3"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1699.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ualqw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 641.0
+offset_top = 254.0
+offset_right = 1229.0
+offset_bottom = 305.0
+scale = Vector2(3, 3)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.75
+theme_override_constants/separation = 100
+
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_3eeem")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jbuuq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tgkb3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_71pj4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_27nk6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sihwq")
+text = "PLAY"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_3eeem")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n0dgh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8kiil")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_s2468")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qdedg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ocbh3")
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
