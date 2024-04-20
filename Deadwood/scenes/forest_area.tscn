@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cko2mjeytllpm"]
+[gd_scene load_steps=17 format=3 uid="uid://cko2mjeytllpm"]
 
 [ext_resource type="Script" path="res://scripts/forest_area.gd" id="1_sxa32"]
 [ext_resource type="PackedScene" uid="uid://cysy4pyvyskw5" path="res://scenes/tile_map1.tscn" id="1_vf7rb"]
@@ -23,45 +23,29 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_yddii"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vw7bb"]
 _data = {
-"fade_in": SubResource("Animation_aiceo")
+"fade_in": SubResource("Animation_aiceo"),
+"fade_out": SubResource("Animation_yddii")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ahje"]
 radius = 25.0
-
-[sub_resource type="Animation" id="Animation_b7nr5"]
-resource_name = "fade_out"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VSplitContainer:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_uqctg"]
-resource_name = "timer"
-length = 7.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VSplitContainer/ColorRect:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 13), Vector2(424, 13)]
-}
 
 [sub_resource type="Animation" id="Animation_y35rq"]
 resource_name = "fade_in"
@@ -91,10 +75,58 @@ tracks/1/keys = {
 "values": [Vector2(-130, -150), Vector2(-130, -212)]
 }
 
+[sub_resource type="Animation" id="Animation_b7nr5"]
+resource_name = "fade_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VSplitContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vndvf"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uqctg"]
+resource_name = "timer"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VSplitContainer/ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 13), Vector2(424, 13)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_or8x6"]
 _data = {
 "fade_in": SubResource("Animation_y35rq"),
 "fade_out": SubResource("Animation_b7nr5"),
+"fade_to_black": SubResource("Animation_vndvf"),
 "timer": SubResource("Animation_uqctg")
 }
 
@@ -123,12 +155,12 @@ polygon = PackedVector2Array(-1, 0, 419, 0, 418, 304, 0, 304, 0, 1, -2, 0, -60, 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Overlay" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -147,7 +179,6 @@ position = Vector2(104, 189)
 shape = SubResource("CircleShape2D_4ahje")
 
 [node name="decision_box" type="Control" parent="."]
-visible = false
 z_index = 5
 layout_mode = 3
 anchors_preset = 15
@@ -169,6 +200,7 @@ libraries = {
 }
 
 [node name="VSplitContainer" type="VSplitContainer" parent="decision_box"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -176,9 +208,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -130.0
-offset_top = -212.0
+offset_top = -150.0
 offset_right = 294.0
-offset_bottom = -4.99994
+offset_bottom = 57.0001
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -190,12 +222,12 @@ size_flags_stretch_ratio = 13.2
 [node name="choice1" type="Button" parent="decision_box/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_qxgpj")
-text = "choice number 1"
+text = " PICKUP paper "
 
 [node name="choice2" type="Button" parent="decision_box/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_qxgpj")
-text = "choice number 2"
+text = "pickup firewood"
 
 [node name="ColorRect" type="ColorRect" parent="decision_box/VSplitContainer"]
 layout_mode = 2
@@ -219,5 +251,7 @@ wait_time = 10.0
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="body_entered" from="chest" to="." method="_on_chest_body_entered"]
 [connection signal="animation_finished" from="decision_box/AnimationPlayer" to="decision_box" method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="decision_box/VSplitContainer/HSplitContainer/choice1" to="decision_box" method="_on_choice_1_pressed"]
+[connection signal="pressed" from="decision_box/VSplitContainer/HSplitContainer/choice2" to="decision_box" method="_on_choice_2_pressed"]
 [connection signal="timeout" from="decision_box/Timer" to="decision_box" method="_on_timer_timeout"]
 [connection signal="timeout" from="CameraReset" to="." method="_on_camera_reset_timeout"]

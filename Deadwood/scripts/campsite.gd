@@ -9,7 +9,7 @@ func _ready():
 	$Music.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 	
@@ -28,4 +28,4 @@ func _on_animation_player_animation_finished(anim_name):
 		"fade_in":
 			next_level = null
 			get_tree().change_scene_to_file("res://scenes/forest_area.tscn")
-			#anim.play("fade_out")
+			

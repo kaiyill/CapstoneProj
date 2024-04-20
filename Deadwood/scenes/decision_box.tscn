@@ -4,6 +4,34 @@
 [ext_resource type="Script" path="res://scripts/decision_box.gd" id="1_nj6bm"]
 [ext_resource type="AudioStream" uid="uid://bqf0qxrdt5i3c" path="res://music/countdown-sound-effect-8-bit-151797.mp3" id="3_oyvbv"]
 
+[sub_resource type="Animation" id="Animation_y35rq"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VSplitContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VSplitContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-130, -150), Vector2(-130, -212)]
+}
+
 [sub_resource type="Animation" id="Animation_b7nr5"]
 resource_name = "fade_out"
 length = 1.5
@@ -34,34 +62,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 13), Vector2(424, 13)]
-}
-
-[sub_resource type="Animation" id="Animation_y35rq"]
-resource_name = "fade_in"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VSplitContainer:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VSplitContainer:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-130, -150), Vector2(-130, -212)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_or8x6"]
@@ -108,12 +108,12 @@ size_flags_stretch_ratio = 13.2
 [node name="choice1" type="Button" parent="VSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4q3g8")
-text = "choice number 1"
+text = "LOOK ELSEWHERE"
 
 [node name="choice2" type="Button" parent="VSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4q3g8")
-text = "choice number 2"
+text = "GRAB FIREWOOD"
 
 [node name="ColorRect" type="ColorRect" parent="VSplitContainer"]
 layout_mode = 2
