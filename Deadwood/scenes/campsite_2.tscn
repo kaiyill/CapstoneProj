@@ -56,12 +56,15 @@ position = Vector2(600, 148)
 [node name="Logan" parent="campsite" index="6"]
 modulate = Color(0.980392, 0.835294, 1, 1)
 
+[node name="Actionable2" parent="campsite/Logan" index="2"]
+dialogue_start = "logan_and_emmy"
+
 [node name="emmy" parent="campsite" instance=ExtResource("2_brcx4")]
 modulate = Color(0.980392, 0.835294, 1, 1)
 position = Vector2(200, 138)
 
 [node name="EmmyLabel" type="Label" parent="campsite/emmy"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.6875)
 z_index = 1
 offset_left = -13.0
 offset_top = -20.0

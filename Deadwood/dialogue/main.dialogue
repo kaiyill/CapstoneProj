@@ -1,6 +1,6 @@
 ~ start
-
-Emmy: Hey Matt! We're finally here!
+if apple_status == ""
+	Emmy: Hey Matt! We're finally here!
 if apple_status == "has":
 	Matt: I have an apple for you
 	- Give it to Emmy
@@ -21,3 +21,26 @@ else
 Logan: It's gonna get creepy in these woods once the sun sets, we should look for firewood.
 Logan: I saw the path goes south from here, would you mind looking around?
 => END
+
+~ logan_and_emmy
+Logan: Matt is sure taking a long time
+Logan: We should go look for him dont you think
+Emmy: Yeah you are right he is taking a while
+- Go look for Matt
+	Logan: Yeah we should go look for him
+- Dont look for Matt 
+	Logan: You are right I am sure he is going to be fine 
+=> END
+
+~ apple_pickup
+You picked a few apple, maybe emmy will like one 
+set apple_status = "has"
+=> END
+
+~ fiona_first_talk
+Fiona: Hi Matt, good to see you!
+=> END
+
+~ deadwood_entrance
+Matt: What is this place?
+Matt: Why is everything dead 

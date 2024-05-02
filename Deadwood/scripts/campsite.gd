@@ -28,5 +28,6 @@ func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"fade_in":
 			next_level = null
-			get_tree().change_scene_to_file("res://scenes/forest_area.tscn")
+			get_tree().change_scene_to_file("res://scenes/fiona_first_encounter.tscn")
+			
 			

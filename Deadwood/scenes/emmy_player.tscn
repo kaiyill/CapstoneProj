@@ -189,8 +189,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5kub"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cgoua"]
-radius = 17.72
+[sub_resource type="CircleShape2D" id="CircleShape2D_yeka2"]
+radius = 24.0
 
 [node name="emmy" type="CharacterBody2D"]
 script = ExtResource("1_yjj1i")
@@ -216,7 +216,13 @@ rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Direction" type="Marker2D" parent="."]
+position = Vector2(0, 7)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_cgoua")
+[node name="area2d" type="Area2D" parent="Direction"]
+position = Vector2(0, 6)
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction/area2d"]
+shape = SubResource("CircleShape2D_yeka2")

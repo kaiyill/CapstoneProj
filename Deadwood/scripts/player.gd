@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 50
+const speed = 70
 var current_dir = "none"
 
 @onready var actionable_finder: Area2D = $Direction/area2d
