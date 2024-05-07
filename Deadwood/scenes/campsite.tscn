@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://be6p5ugjx1iqt"]
+[gd_scene load_steps=21 format=3 uid="uid://be6p5ugjx1iqt"]
 
 [ext_resource type="Script" path="res://scripts/campsite.gd" id="1_ncbok"]
 [ext_resource type="PackedScene" uid="uid://cysy4pyvyskw5" path="res://scenes/tile_map1.tscn" id="2_gaa77"]
@@ -23,6 +23,21 @@ radius = 18.2483
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_if6rb"]
 size = Vector2(51, 48)
+
+[sub_resource type="Animation" id="Animation_iboix"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player/Camera2D/CharacterName:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_r2l3h"]
 resource_name = "fade_in"
@@ -79,14 +94,15 @@ tracks/0/path = NodePath("player/Camera2D/CharacterName:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": []
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cu28s"]
 _data = {
+"RESET": SubResource("Animation_iboix"),
 "fade_in": SubResource("Animation_r2l3h"),
 "fade_in_2": SubResource("Animation_svyaj"),
 "fade_out": SubResource("Animation_jww4p"),
@@ -169,7 +185,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

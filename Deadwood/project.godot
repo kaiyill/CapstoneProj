@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Deadwood"
-run/main_scene="res://scenes/game_intro.tscn"
+run/main_scene="res://scenes/scene_switcher.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
@@ -24,6 +24,10 @@ State="*res://scripts/state.gd"
 general/states=["State"]
 general/balloon_path="res://dialogue/balloon.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Deadwood"
@@ -31,6 +35,10 @@ project/assembly_name="Deadwood"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

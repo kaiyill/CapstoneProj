@@ -2,17 +2,16 @@
 if apple_status == ""
 	Emmy: Hey Matt! We're finally here!
 if apple_status == "has":
-	Matt: I have an apple for you
+	Matt: I have an apple for you!
 	- Give it to Emmy
 		set apple_status = "gave"
-		Matt: Here you go
-		Emmy: Wow! Thanks you for the apple!
+		Matt: Here you go.
+		Emmy: Wow! Thanks for the apple!
 	- Keep it for yourself
-		Matt: But this ones for me 
-		Emmy: Fair enough
+		Matt: This ones for me. 
+		Emmy: Fair enough.
 elif apple_status == "gave"
-	Emmy: Thank you again for the apple
-	Matt: No worries
+	Emmy: Thank you again for the apple!
 else
 	Emmy: Logan and I set up the tent already, I'm not sure where Fiona is though.
 => END
@@ -23,24 +22,24 @@ Logan: I saw the path goes south from here, would you mind looking around?
 => END
 
 ~ logan_and_emmy
-Logan: Matt is sure taking a long time
-Logan: We should go look for him dont you think
-Emmy: Yeah you are right he is taking a while
+Logan: Matt is sure taking a long time.
+Logan: We should go look for him, don't you think?
+Emmy: Yeah, he is taking a while.
 - Go look for Matt
-	Logan: Yeah we should go look for him
+	Logan: Yeah, we should go look for him.
 - Dont look for Matt 
-	Logan: You are right I am sure he is going to be fine 
+	Logan: You are right I am sure he is going to be fine. 
 => END
 
 ~ apple_pickup
-You picked a few apple, maybe emmy will like one 
+You picked an apple off the tree. Maybe Emmy would like one.
 set apple_status = "has"
 => END
 
 ~ fiona_first_talk
-Fiona: Hi Matt, good to see you!
+Fiona: This place stinks, there's nothing to do around here.
 => END
 
 ~ deadwood_entrance
 Matt: What is this place?
-Matt: Why is everything dead 
+Matt: Why is everything dead?

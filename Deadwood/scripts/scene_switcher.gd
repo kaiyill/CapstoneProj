@@ -14,7 +14,7 @@ func handle_level_changed(current_level_name: String):
 		"game_intro":
 			next_level_name = "campsite"
 		"campsite":
-			next_level_name = "forest_area"
+			next_level_name = "fiona_first_encounter"
 		_:
 			return
 	var temp = load("res://scenes/" + next_level_name + ".tscn")
